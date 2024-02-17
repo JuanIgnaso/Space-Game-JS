@@ -1,0 +1,19 @@
+{
+    "name": "juanignaso/space-game-js",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "juanignaso/php-mcv-framework": "v1.0.3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\":"./"
+        }
+    },
+    "authors": [
+        {
+            "name": "JuanIgnaso",
+            "email": "104755375+JuanIgnaso@users.noreply.github.com"
+        }
+    ]
+}
