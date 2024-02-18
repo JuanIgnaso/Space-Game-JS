@@ -4,12 +4,100 @@
 
 @import "tailwindcss/utilities";
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body{
+    font-family: "Press Start 2P", system-ui;
+}
+
 .my-legacy-class {
     padding: 5px;
     margin: 5px;
     background: red;
     color:white;
     font-weight: 800;
+}
+
+body *{
+  box-sizing: border-box;
+} 
+
+h1,h2,h3,h4,h5{
+  color:white;
+}
+
+.endGameInput{
+  white-space: pre;
+  position: absolute;
+  left:50%;
+  transform: translate(-50%);
+  align-self: center;
+
+  h3{
+    color:red;
+    font-size: 1.8em;
+    align-self: center;
+  }
+}
+
+.alien{
+  position:absolute;
+  top:0px;
+  left:0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1em,2.5vw,2em);
+}
+
+.enabled{
+  color: red;
+}
+
+.dissabled{
+  color: grey;
+  
+}
+
+.player{
+  width: 20px;
+  aspect-ratio: 1/1;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  z-index:20;
+  border:0px;
+  padding:0px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:lime;
+  font-size: 2em;
+}
+
+.bullet{
+
+  width: 10px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color:  violet; 
+  position:absolute;
+}
+
+.formGroup{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+}
+
+.input_error{
+  color:crimson;
 }
 
 @layer base{

@@ -32,6 +32,20 @@ $app->router->['http request(get/post)']('/url',controller::class,'method')
 ##Home page
 $app->router->get('/', [app\controllers\SiteController::class, 'home']);
 
+##Scoreboard page
+$app->router->get('/scoreBoard', [app\controllers\GamesController::class, 'scores']);
+
+##Game
+$app->router->get('/game', [app\controllers\SiteController::class, 'game']);
+
+
+##Login/Register
+$app->router->get('/register', [app\controllers\AuthController::class, 'register']);
+$app->router->post('/register', [app\controllers\AuthController::class, 'register']);
+$app->router->get('/login', [app\controllers\AuthController::class, 'login']);
+
+$app->router->get('/logout', [app\controllers\AuthController::class, 'logout']);
+
 /*---------------------------------------------------------*/
 
 $app->run();

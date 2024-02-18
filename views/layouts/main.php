@@ -9,6 +9,7 @@ use juanignaso\phpmvc\framework\Application;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/fontawesome/css/all.css">
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -19,9 +20,9 @@ use juanignaso\phpmvc\framework\Application;
     </title>
 </head>
 
-<body>
+<body class="bg-neutral-900">
 
-    <div class="container">
+    <div class="PageContainer">
         {{content}}
     </div>
 

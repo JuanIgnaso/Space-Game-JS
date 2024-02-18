@@ -10,4 +10,9 @@ class SiteController extends Controller
     {
         return $this->render('home');
     }
+
+    public function game()
+    {
+        return $this->render('game');
+    }
 }

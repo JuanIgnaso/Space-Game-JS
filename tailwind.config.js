@@ -6,6 +6,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities, addComponents, e, config }) {
+      // Add your custom styles here
+    }),
+    require('@tailwindcss/forms'),
+  ],
 }
+
 
