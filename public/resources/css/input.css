@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.my-legacy-class {
+    padding: 5px;
+    margin: 5px;
+    background: red;
+    color:white;
+    font-weight: 800;
+}
+
+@layer base{
+    h1{
+      @apply text-5xl;
+      @apply font-bold;
+    }
+    h2{
+      @apply text-3xl;
+      @apply font-bold;
+    }
+    h3{
+      @apply text-xl;
+      @apply font-bold;
+    }
+    h4{
+      @apply text-lg;
+      @apply font-bold;
+    }
+    body{
+      @apply font-normal;
+    }
+    
+  }
