@@ -39,9 +39,18 @@ class AuthController extends Controller
 
 
 
-    public function login(Request $request)
+    public function login(Request $request, Response $res)
     {
-        return $this->render('login');
+        $model = new LoginForm();
+        if ($request->isPost()) {
+            $model->loadData($request->getBody());
+            if ($model->validate() && $model->login()) {
+                $res->redirect('/');
+            }
+        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     public function logout(Request $request, Response $response)

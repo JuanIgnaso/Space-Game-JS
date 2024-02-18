@@ -3,7 +3,7 @@
 <main class="relative flex flex-col">
     <div class="flex flex-col items-center">
         <div id="box"
-            class="w-1/3 relative flex aspect-square border-8 border-white bg-black/25 overflow-hidden shadow-lg shadow-white/40">
+            class="w-1/3 relative flex aspect-square border-8 border-white bg-hero-bubbles bg-neutral-900 overflow-hidden shadow-lg shadow-white/40">
             <!-- Test -->
 
         </div>
