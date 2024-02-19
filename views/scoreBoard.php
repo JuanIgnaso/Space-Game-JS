@@ -4,14 +4,14 @@ use juanignaso\phpmvc\framework\Application;
 $this->title = 'ScoreBoard';
 ?>
 <h1 class="text-center">TOP 10 Scores</h1>
-<section class="m-auto">
+<section class="m-auto p-3">
     <ul class="text-white flex justify-center gap-3">
         <li><a href="/scoreBoard">General</a></li>
         <li><a href="/scoreBoard?personal=yes">Personal Best</a></li>
     </ul>
 </section>
 <table class="text-white table-auto m-auto">
-    <caption>TOP 10
+    <caption class="text-xs text-lime-400">TOP 10
         <?php echo isset($global) && !$global ? Application::$app->user->nombre : 'Global'; ?> Scores
     </caption>
     <thead class="text-red-400 text-xl">
