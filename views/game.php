@@ -1,3 +1,6 @@
+<?php
+$this->title = 'Game';
+?>
 <h1 class="text-3xl text-center m-0 p-3 ">GAME</h1>
 <h2 class="text-2xl p-3 text-center m-0">Move the ship and shoot the Space Monsters</h2>
 <main class="relative flex flex-col">
@@ -14,6 +17,7 @@
     <section class="flex justify-center gap-4">
         <button id="start" class="border-4 border-white p-2 text-white rounded-md" onclick="startGame()">Start</button>
         <button class="border-4 border-white p-2 text-white rounded-md" onclick="location.reload()">Restart</button>
+        <button class="border-4 border-white p-2 text-white rounded-md"><a href="/scoreBoard">High Score</a></button>
     </section>
 
 </main>

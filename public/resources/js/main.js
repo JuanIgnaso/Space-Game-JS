@@ -63,7 +63,7 @@
 
             //Define the duration of the game, here it is 30 seconds.
             /*1000 = 1 sec*/
-            var countDown = new Date().getTime() + 10000;
+            var countDown = new Date().getTime() + 30000;
 
             timer = setInterval(function(){
 
@@ -91,9 +91,26 @@
                     let t = document.createElement('div');
                     t.setAttribute('class','endGameInput');
                     t.innerHTML = `<h3 class='text-red-500 text-3xl'>Time is Up!</h3><p class="text-center text-white text-xl">Your score: ${points}</p>`;
-                                    
+                    saveGame(1);          
                     box.appendChild(t);
                     document.querySelector('#timeLeft').innerHTML = '';
+                }
+            });
+        }
+
+        function saveGame(finished){
+            $.ajax({
+                url:'/saveGame',
+                type:'POST',
+                data:{
+                    score:points,
+                    game_finished:finished,
+                },
+                success: function(response){
+                    console.log('Partida guardada');
+                },
+                error: function(error){
+                    console.log(JSON.parse(error.responseText));
                 }
             });
         }
@@ -104,7 +121,7 @@
        function shoot(e)
        {
         //Play the laser shoot sound effect
-        playSoundEffect('../resources/sounds/laser_shot.mp3');
+        playSoundEffect('/resources/sounds/laser_shot.mp3');
 
         //create bullet,set its class and position to where the user is pointing with the cursor
         let b = document.createElement('div');
@@ -129,8 +146,8 @@
                     
                     //If conditions are met, then show explosion icon, delete enemy afther 0.2s, delete bullet and increase player's score.
                     enemies[index].innerHTML = '<i class=" fa-solid fa-burst " style="color: rgb(251 191 36);"></i>';
-                    let explode = setTimeout(function(){enemies[index].parentNode.removeChild(enemies[index]);},200);
-                    playSoundEffect('../resources/sounds/explosion.mp3');
+                    let explode = setTimeout(function(){enemies[index].parentNode == null ? '' : enemies[index].parentNode.removeChild(enemies[index]);},200);
+                    playSoundEffect('/resources/sounds/explosion.mp3');
                     b.remove();
                     clearInterval(mover);
                     points+=10;
@@ -191,8 +208,9 @@
                 if(this.classList.contains('enabled')){
                     //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
                     box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center m-auto'>GAME OVER</h3><p class='text-center text-white text-xl'>Your score: ${points}</p></div>`;
-                    playSoundEffect('../resources/sounds/game_over.mp3');
+                    playSoundEffect('/resources/sounds/game_over.mp3');
                     stopGame();
+                    saveGame(0);
                     clearInterval(timer);
                 }
             }

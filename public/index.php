@@ -45,7 +45,9 @@ $app->router->post('/register', [app\controllers\AuthController::class, 'registe
 $app->router->get('/login', [app\controllers\AuthController::class, 'login']);
 $app->router->post('/login', [app\controllers\AuthController::class, 'login']);
 
-
+#Guardar Juego
+$app->router->get('/saveGame', [app\controllers\GamesController::class, 'saveGame']);
+$app->router->post('/saveGame', [app\controllers\GamesController::class, 'saveGame']);
 
 $app->router->get('/logout', [app\controllers\AuthController::class, 'logout']);
 
