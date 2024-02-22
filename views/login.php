@@ -9,17 +9,18 @@ $this->title = 'Login';
 <main>
     <form class="flex flex-col w-1/3 m-auto p-3" action="" method="post">
 
-        <label class=" flex flex-col  mb-4">
+        <label class=" flex flex-col mb-4 text-red-400">
             Email
-            <input type="text" name="email" id="email" class="bg-neutral-900 border-4 border-white">
+            <input type="text" name="email" id="email" class="bg-neutral-900 border-4 border-white text-white">
             <p class="font-bold text-red-800 text-xs">
                 <?php echo isset($model->errors['email']) ? $model->getFirstError('email') : ''; ?>
             </p>
         </label>
 
-        <label class=" flex flex-col mb-4">
+        <label class=" flex flex-col mb-4 text-red-400">
             Contraseña
-            <input type="password" name="password" id="password" class="bg-neutral-900 border-4 border-white">
+            <input type="password" name="password" id="password"
+                class="bg-neutral-900 border-4 border-white text-white">
             <p class="font-bold text-red-800 text-xs">
                 <?php echo isset($model->errors['password']) ? $model->getFirstError('password') : ''; ?>
             </p>

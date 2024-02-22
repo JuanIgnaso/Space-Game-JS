@@ -23,6 +23,7 @@ class LoginForm extends Model
             return false;
         }
         if (password_verify($this->password, $usuario->password)) {
+            $usuario->updateUserLog($usuario->id);
             return Application::$app->login($usuario);
         } else {
             $this->addError('password', 'Contraseña incorrecta.');

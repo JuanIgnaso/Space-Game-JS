@@ -10,6 +10,7 @@ if (!Application::isGuest()) {
     <p>
         <?php echo Application::$app->user->getUserName(); ?> <a href="/logout">logout</a>
     </p>
+    <p><a href="/editProfile">Edit My Profile</a></p>
     <?php
 } else {
     ?>

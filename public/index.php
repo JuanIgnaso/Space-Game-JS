@@ -45,6 +45,12 @@ $app->router->post('/register', [app\controllers\AuthController::class, 'registe
 $app->router->get('/login', [app\controllers\AuthController::class, 'login']);
 $app->router->post('/login', [app\controllers\AuthController::class, 'login']);
 
+
+##Edit user username/email/password
+$app->router->get('/editProfile', [app\controllers\UserController::class, 'edit']);
+$app->router->post('/editProfile', [app\controllers\UserController::class, 'edit']);
+
+
 #Guardar Juego
 $app->router->get('/saveGame', [app\controllers\GamesController::class, 'saveGame']);
 $app->router->post('/saveGame', [app\controllers\GamesController::class, 'saveGame']);
