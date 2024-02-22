@@ -797,11 +797,6 @@ body{
   aspect-ratio: 1 / 1;
 }
 
-.size-20{
-  width: 5rem;
-  height: 5rem;
-}
-
 .w-1\/3{
   width: 33.333333%;
 }
@@ -818,12 +813,20 @@ body{
   align-items: center;
 }
 
+.items-baseline{
+  align-items: baseline;
+}
+
 .justify-start{
   justify-content: flex-start;
 }
 
 .justify-center{
   justify-content: center;
+}
+
+.gap-2{
+  gap: 0.5rem;
 }
 
 .gap-3{
@@ -834,16 +837,32 @@ body{
   gap: 1rem;
 }
 
-.space-y-5 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+.gap-5{
+  gap: 1.25rem;
 }
 
-.space-x-5 > :not([hidden]) ~ :not([hidden]){
+.space-x-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
-  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .self-center{
@@ -876,21 +895,6 @@ body{
   background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 
-.bg-orange-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
-}
-
-.bg-orange-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
-}
-
-.bg-orange-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
-}
-
 .p-2{
   padding: 0.5rem;
 }
@@ -907,6 +911,10 @@ body{
   text-align: center;
 }
 
+.align-baseline{
+  vertical-align: baseline;
+}
+
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
@@ -917,9 +925,9 @@ body{
   line-height: 2.25rem;
 }
 
-.text-xl{
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-xs{
@@ -951,6 +959,11 @@ body{
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
+.text-violet-400{
+  --tw-text-opacity: 1;
+  color: rgb(167 139 250 / var(--tw-text-opacity));
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -970,6 +983,11 @@ body{
 .shadow-white\/40{
   --tw-shadow-color: rgb(255 255 255 / 0.4);
   --tw-shadow: var(--tw-shadow-colored);
+}
+
+.outline-none{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .bg-hero-bubbles{
@@ -996,8 +1014,12 @@ h1,h2,h3,h4,h5{
   color:white;
 }
 
-th, td {
-  padding: 1rem;
+*:focus {
+  outline: none;
+}
+
+input,button,select:focus{
+  outline: none;
 }
 
 .endGameInput{
@@ -1069,4 +1091,21 @@ th, td {
 
 .input_error{
   color:crimson;
+}
+
+.focus\:border-green-400:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(74 222 128 / var(--tw-border-opacity));
+}
+
+@media (min-width: 1024px){
+  .lg\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .lg\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }

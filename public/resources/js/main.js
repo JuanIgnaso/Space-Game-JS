@@ -90,7 +90,7 @@
                     stopGame();
                     let t = document.createElement('div');
                     t.setAttribute('class','endGameInput');
-                    t.innerHTML = `<h3 class='text-red-500 text-3xl'>Time is Up!</h3><p class="text-center text-white text-xl">Your score: ${points}</p>`;
+                    t.innerHTML = `<h3 class='text-red-500 text-3xl'>Se acabó!</h3><p class="text-center text-white text-xl">Tu puntuación: ${points}</p>`;
                     saveGame(1);          
                     box.appendChild(t);
                     document.querySelector('#timeLeft').innerHTML = '';
@@ -207,7 +207,7 @@
                 plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
                 if(this.classList.contains('enabled')){
                     //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
-                    box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center m-auto'>GAME OVER</h3><p class='text-center text-white text-xl'>Your score: ${points}</p></div>`;
+                    box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center m-auto'>GAME OVER</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
                     playSoundEffect('/resources/sounds/game_over.mp3');
                     stopGame();
                     saveGame(0);

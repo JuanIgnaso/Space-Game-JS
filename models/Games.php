@@ -19,15 +19,12 @@ class Games
 
     public string $finished_at = '';
 
-
     public int $game_finished = 1;
-
 
     public function __construct()
     {
-        $this->usuario = Application::$app->user->id;
+        $this->usuario = !Application::isGuest() ? Application::$app->user->id : '';
     }
-
 
     public function loadData($data)
     {
@@ -51,7 +48,7 @@ class Games
     public function getPersonalScores()
     {
         $statement = self::prepare("SELECT " . self::TABLE_NAME . ".*,usuarios.nombre FROM " . self::TABLE_NAME . " LEFT JOIN usuarios ON " . self::TABLE_NAME . ".user_id = usuarios.id WHERE user_id=:user ORDER BY score DESC LIMIT 10");
-        $statement->bindValue(":user", Application::$app->user->id);
+        $statement->bindValue(":user", $this->usuario);
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }

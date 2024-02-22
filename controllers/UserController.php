@@ -4,12 +4,20 @@ namespace app\controllers;
 use app\models\EditUserForm;
 use juanignaso\phpmvc\framework\Application;
 use juanignaso\phpmvc\framework\Controller;
+use juanignaso\phpmvc\framework\middlewares\AuthMiddleware;
 use juanignaso\phpmvc\framework\Request;
 use juanignaso\phpmvc\framework\Response;
 use juanignaso\phpmvc\framework\Usuario;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        #restringir a usuarios no loggeados a la zona de notas.
+        $this->registerMiddleware(new AuthMiddleware(['edit']));
+    }
+
     public function edit(Request $request, Response $response)
     {
         $model = new Usuario();
@@ -52,6 +60,7 @@ class UserController extends Controller
             }
 
             if (count($model->errors) == 0) {
+                //Si no hay ningún error editamos
                 $model->loadData($arr);
                 if ($model->edit()) {
                     $response->redirect('/');

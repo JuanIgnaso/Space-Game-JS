@@ -4,7 +4,7 @@ use juanignaso\phpmvc\framework\Application;
 $this->title = 'Edit My Profile';
 ?>
 
-<h1 class="text-center">Edit my Profile</h1>
+<h1 class="text-center">Editar Mi Perfil</h1>
 <main>
     <form class="flex flex-col w-1/3 m-auto p-3" action="" method="post">
 

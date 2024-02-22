@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\LoginForm;
 use juanignaso\phpmvc\framework\Controller;
+use juanignaso\phpmvc\framework\middlewares\LoggedMiddleware;
 use juanignaso\phpmvc\framework\Request;
 use juanignaso\phpmvc\framework\Response;
 use juanignaso\phpmvc\framework\Usuario;
@@ -11,6 +12,11 @@ use juanignaso\phpmvc\framework\Application;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->loggedMiddleware(new LoggedMiddleware(['login', 'register']));
+    }
+
     public function register(Request $request)
     {
         $user = new Usuario();
