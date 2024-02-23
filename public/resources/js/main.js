@@ -6,13 +6,16 @@
         let time = document.querySelector('#time');
         let dimensions = box.getBoundingClientRect(); 
         document.querySelectorAll('button').forEach(element => element.addEventListener('click',function(){playSoundEffect('../resources/sounds/select_click.mp3')}));
-        let spawnObj, timeout, dlt, timer;
-        spawnObj = timeout = dlt = timer = null;
+        let spawnObj, enemyTimeout,powTimeout, dlt,dltP, timer, powUp;
+        dltP = powTimeout = powUp = spawnObj = enemyTimeout = dlt = timer = null;
 
         /*PLAYER*/
         let player = document.querySelector('.player');
         let plyrBox = player.getBoundingClientRect();
        
+        /*POWER UPS*/
+        let doublePoints = false;
+
         /*
         Update the dimensions array on screen resize
         */
@@ -42,6 +45,8 @@
             document.removeEventListener('mousemove',trackMouse);
             box.removeEventListener('click',shoot);
             clearInterval(dlt);
+            clearInterval(powUp);
+            clearInterval(dltP);
         }
 
         function startGame()
@@ -54,9 +59,12 @@
             document.querySelector('#start').style.display = 'none';
             box.innerHTML = '';
             score.innerHTML = points;
-            dlt = setInterval(deleteFirst,timeout + 7000);
+            dlt = setInterval(function(){deleteFirst('.alien')},enemyTimeout + 7000);
             generateMonster();
             startCountdown();
+            generatePowerUp();
+            dltP = setInterval(function(){deleteFirst('.powerUp')},Math.floor(powTimeout / 2));
+
         }
 
         function startCountdown(){
@@ -150,7 +158,7 @@
                     playSoundEffect('/resources/sounds/explosion.mp3');
                     b.remove();
                     clearInterval(mover);
-                    points+=10;
+                    doublePoints ? points+=20 : points+=10;
                     score.innerHTML = points;
                 }
             }
@@ -168,20 +176,42 @@
         trackMouse = (e) => { isInsideBox(e) ? moveMouse(e) : '';}
 
         /*
-        Simulates enemy dissapearing
+        Simulates enemy or item dissapearing, gets the class passed by paramater and creates an array
         */
-        function deleteFirst(){
-            let obstaclesList = document.querySelectorAll('.alien');
+        function deleteFirst(cssClass){
+            let obstaclesList = document.querySelectorAll(cssClass);
             if(obstaclesList.length != 0){
                 obstaclesList[0].parentNode.removeChild(obstaclesList[0]);
             } 
         }
 
 
+        function generatePowerUp(){
+            
+            powTimeout = getRndInteger(9000,12000);
+            let pUp =  document.createElement("div");
+            pUp.innerHTML = '<i class="fa-solid fa-gem"></i>';
+            pUp.setAttribute('class','powerUp');
+            pUp.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
+            box.appendChild(pUp);
+            console.log('power up');
+            pUp.addEventListener('mouseover',function(){
+                let elementPos = this.getBoundingClientRect();
+                if(
+                    plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
+                        //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
+                        this.remove();
+                        doublePoints = true; //sets flag to true
+                        let waste = setTimeout(function(){doublePoints = false;console.log(doublePoints);},5000); //sets timeout to turn it off afther 5 seconds.
+                }
+            });
+            powUp = setTimeout(generatePowerUp,powTimeout);
+        }
+
         /*Generate a new enemy inside de box*/
         function generateMonster(){
             //Modify time of enemy spawning and generates its position(left and top).
-            timeout = getRndInteger(1000,2000);
+            enemyTimeout = getRndInteger(1000,2000);
             let top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
             let left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
             let alien =  document.createElement("div");
@@ -196,7 +226,7 @@
             //Inserts alien inside the game box
             box.appendChild(alien);
             let enable = setTimeout(function(){alien.classList.remove("dissabled"); alien.classList.toggle('enabled');},600);
-            spawnObj = setTimeout(generateMonster,timeout);
+            spawnObj = setTimeout(generateMonster,enemyTimeout);
         }
 
               
