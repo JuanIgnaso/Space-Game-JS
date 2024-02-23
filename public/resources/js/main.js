@@ -14,7 +14,11 @@
         let plyrBox = player.getBoundingClientRect();
        
         /*POWER UPS*/
-        let doublePoints = false;
+        let powerUps = {
+            'doublePoints':false,
+            'invencible':false,
+        };
+        
 
         /*
         Update the dimensions array on screen resize
@@ -158,7 +162,7 @@
                     playSoundEffect('/resources/sounds/explosion.mp3');
                     b.remove();
                     clearInterval(mover);
-                    doublePoints ? points+=20 : points+=10;
+                    powerUps['doublePoints'] == true ? points+=20 : points+=10;
                     score.innerHTML = points;
                 }
             }
@@ -201,8 +205,8 @@
                     plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
                         //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
                         this.remove();
-                        doublePoints = true; //sets flag to true
-                        let waste = setTimeout(function(){doublePoints = false;console.log(doublePoints);},5000); //sets timeout to turn it off afther 5 seconds.
+                        powerUps['doublePoints'] = true; //sets flag to true
+                        let waste = setTimeout(function(){powerUps['doublePoints'] = false;console.log(powerUps['doublePoints']);},5000); //sets timeout to turn it off afther 5 seconds.
                 }
             });
             powUp = setTimeout(generatePowerUp,powTimeout);
