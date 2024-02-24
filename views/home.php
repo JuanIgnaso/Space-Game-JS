@@ -26,3 +26,4 @@ if (!Application::isGuest()) {
 <h1 class="text-purple-500 font-bold">
     Página de inicio
 </h1>
+<h2 class="text-red-400 text-center"><a href="/game">Jugar</a></h2>

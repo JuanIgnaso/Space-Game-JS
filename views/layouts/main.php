@@ -30,7 +30,7 @@ use juanignaso\phpmvc\framework\Application;
     <footer class="text-center p-4">
         <ol class="flex flex-col items-center space-y-2 text-white">
             <li>
-                <h3 class="text-red-400">My Notes App</h3>
+                <h3 class="text-red-400">Space Game JS</h3>
             </li>
             <li><span>Contactos</span></li>
             <li>

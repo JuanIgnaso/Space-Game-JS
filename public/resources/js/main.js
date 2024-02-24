@@ -13,13 +13,15 @@
         let player = document.querySelector('.player');
         let plyrBox = player.getBoundingClientRect();
        
-        /*POWER UPS*/
+        /*
+        POWERUPS OBJECT
+        Stores powerup status, message and soundeffect.
+        */ 
         let powerUps = {
-            'doublePoints':false,
-            'invencible':false,
+            'doublePoints':{'enabled':false,'message':'Double Points','sound':'/resources/sounds/power_up.mp3'},
+            'invencible':{'enabled':false,'message':'Invencible','sound':'/resources/sounds/shield_up.mp3'},
+            'penetratingBullets':{'enabled':false,'message':'Penetrating Bullets','sound':'/resources/sounds/charge_up.mp3'},
         };
-        
-
         /*
         Update the dimensions array on screen resize
         */
@@ -53,6 +55,13 @@
             clearInterval(dltP);
         }
 
+        /*
+        Iniciates te game:
+        -adds event to shoot.
+        -adds event to track the mouse
+        -cleans the enemies of previous match
+        -starts countdown and enemies/powerup spawning
+        */
         function startGame()
         {
             /*
@@ -63,11 +72,11 @@
             document.querySelector('#start').style.display = 'none';
             box.innerHTML = '';
             score.innerHTML = points;
-            dlt = setInterval(function(){deleteFirst('.alien')},enemyTimeout + 7000);
+            dlt = setInterval(function(){deleteFirst('.alien')},enemyTimeout + getRndInteger(8000,10000));
             generateMonster();
             startCountdown();
             generatePowerUp();
-            dltP = setInterval(function(){deleteFirst('.powerUp')},Math.floor(powTimeout / 2));
+            dltP = setInterval(function(){deleteFirst('.powerUp')},powTimeout + 2000);
 
         }
 
@@ -146,23 +155,30 @@
         let mover = setInterval(function(){
         let enemies = document.querySelectorAll('.alien');
         let bulletHitBox = b.getBoundingClientRect();
-            
+        
             //Checks if the bullet hits an enemy
             for (let index = 0; index < enemies.length; index++) {
                 let enemyHitBox = enemies[index].getBoundingClientRect();
                 if(enemyHitBox.bottom > bulletHitBox.top && 
-                    enemyHitBox.left < bulletHitBox.left && 
+                    enemyHitBox.left < bulletHitBox.left &&  
                     enemyHitBox.right > bulletHitBox.right && 
                     enemyHitBox.bottom < bulletHitBox.bottom && 
                     enemies[index].classList.contains('enabled')){
-                    
-                    //If conditions are met, then show explosion icon, delete enemy afther 0.2s, delete bullet and increase player's score.
-                    enemies[index].innerHTML = '<i class=" fa-solid fa-burst " style="color: rgb(251 191 36);"></i>';
+                    if(!enemies[index].classList.contains('down')){
+                        if(powerUps['doublePoints']['enabled']){
+                            points+=20;
+                        }else{
+                            points+=10; 
+                        }
+                    }
+                    enemies[index].classList.toggle('down');
+                    enemies[index].innerHTML = '<i class="fa-solid fa-burst" style="color: rgb(251 191 36);"></i>';
                     let explode = setTimeout(function(){enemies[index].parentNode == null ? '' : enemies[index].parentNode.removeChild(enemies[index]);},200);
                     playSoundEffect('/resources/sounds/explosion.mp3');
-                    b.remove();
-                    clearInterval(mover);
-                    powerUps['doublePoints'] == true ? points+=20 : points+=10;
+                    if(!powerUps['penetratingBullets']['enabled']){
+                        b.remove();
+                        clearInterval(mover);//removes bullet
+                    }
                     score.innerHTML = points;
                 }
             }
@@ -175,6 +191,7 @@
             b.style.top = (parseInt(window.getComputedStyle(b).getPropertyValue('top')) - 5) + 'px';
         },0);
        }
+
 
         //If the mouse is inside the box then the player moves
         trackMouse = (e) => { isInsideBox(e) ? moveMouse(e) : '';}
@@ -191,11 +208,16 @@
 
 
         function generatePowerUp(){
-            
+            /*
+            shield - <i class="fa-solid fa-shield-halved"></i>
+            penetrating bullets - <i class="fa-solid fa-angles-up"></i>
+            */
+            const powType = ['doublePoints','invencible','penetratingBullets'];
+            let type = powType[getRndInteger(0,powType.length - 1)];
             powTimeout = getRndInteger(9000,12000);
             let pUp =  document.createElement("div");
-            pUp.innerHTML = '<i class="fa-solid fa-gem"></i>';
-            pUp.setAttribute('class','powerUp');
+            pUp.innerHTML = getPowerUpIcon(type);
+            pUp.setAttribute('class',`powerUp ${type}`);
             pUp.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
             box.appendChild(pUp);
             console.log('power up');
@@ -203,19 +225,38 @@
                 let elementPos = this.getBoundingClientRect();
                 if(
                     plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
-                        //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
                         this.remove();
-                        powerUps['doublePoints'] = true; //sets flag to true
-                        let waste = setTimeout(function(){powerUps['doublePoints'] = false;console.log(powerUps['doublePoints']);},5000); //sets timeout to turn it off afther 5 seconds.
+                        powerUps[type]['enabled'] = true; //sets flag to true
+                        playSoundEffect(powerUps[type]['sound']);
+                        document.querySelector('#powerup').innerHTML = powerUps[type]['message'];
+                        player.classList.toggle(type);
+                        let waste = setTimeout(function(){
+                            powerUps[type]['enabled'] = false;
+                            document.querySelector('#powerup').innerHTML = '';
+                            player.classList.toggle(type);
+                        },5000); //sets timeout to turn it off afther 5 seconds.
                 }
             });
+
+            //Generates power up icon depending of the string it recives.
+            function getPowerUpIcon(str){
+                switch(str){
+                    case 'doublePoints':
+                        return '<i class="fa-solid fa-gem"></i>';
+                    case 'invencible':
+                        return '<i class="fa-solid fa-shield-halved"></i>';
+                    case 'penetratingBullets':
+                        return '<i class="fa-solid fa-angles-up"></i>';
+                }
+            }
+
             powUp = setTimeout(generatePowerUp,powTimeout);
         }
 
         /*Generate a new enemy inside de box*/
         function generateMonster(){
             //Modify time of enemy spawning and generates its position(left and top).
-            enemyTimeout = getRndInteger(1000,2000);
+            enemyTimeout = getRndInteger(200,2000);
             let top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
             let left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
             let alien =  document.createElement("div");
@@ -239,7 +280,7 @@
                 let elementPos = this.getBoundingClientRect();
             if(
                 plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
-                if(this.classList.contains('enabled')){
+                if(this.classList.contains('enabled') && !player.classList.contains('invencible')){
                     //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
                     box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center m-auto'>GAME OVER</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
                     playSoundEffect('/resources/sounds/game_over.mp3');

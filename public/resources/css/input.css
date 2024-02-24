@@ -101,7 +101,6 @@ input,button,select:focus{
 
 .powerUp{
   font-size: clamp(1em,2.5vw,2em);
-  color:rgb(196, 116, 196);
   animation: animate;
   left:0px;
   top:0px;
@@ -113,6 +112,18 @@ input,button,select:focus{
   animation-iteration-count: infinite;
   animation-duration: 2.5s;
   animation-timing-function: ease-in-out;
+}
+
+.doublePoints{
+  color:rgb(196, 116, 196);
+}
+
+.invencible{
+color:rgb(34 211 238);
+}
+
+.penetratingBullets{
+  color:rgb(250 204 21);
 }
 
 @keyframes animate {

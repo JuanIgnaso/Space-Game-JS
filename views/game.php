@@ -24,7 +24,9 @@ $this->title = 'Juego';
 
 </main>
 
-<div class="player"><i class="fa-brands fa-space-awesome"></i></div>
+<div class="player"><i class="fa-brands fa-space-awesome"></i><span
+        class="text-red-400 absolute top-full text-base whitespace-normal text-center" id="powerup"></span></div>
+
 
 <script src="/resources/js/main.js"></script>
 <footer class="text-center text-white p-4">
