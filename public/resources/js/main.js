@@ -1,11 +1,12 @@
-        
+        /*VARIABLES------------------------------------------------------------------------------------------------------*/
         /*GAME ZONE*/
         let box = document.querySelector('#box');
         let score = document.querySelector('#score');//refernces the DOM element that shows the actual score
         let points = 0; //curr points of player in match
         let time = document.querySelector('#time');
         let dimensions = box.getBoundingClientRect(); 
-        document.querySelectorAll('button').forEach(element => element.addEventListener('click',function(){playSoundEffect('../resources/sounds/select_click.mp3')}));
+        
+        /*SETINTERVALS AND TIMEOUTS*/
         let spawnObj, enemyTimeout,powTimeout, dlt,dltP, timer, powUp;
         dltP = powTimeout = powUp = spawnObj = enemyTimeout = dlt = timer = null;
 
@@ -22,6 +23,13 @@
             'invencible':{'enabled':false,'message':'Invencible','sound':'/resources/sounds/shield_up.mp3'},
             'penetratingBullets':{'enabled':false,'message':'Penetrating Bullets','sound':'/resources/sounds/charge_up.mp3'},
         };
+
+        /*-------------------------------------------------------------------------------------------------------------------*/
+
+        /*FUNCTIONS AND EVENTLISTENERS---------------------------------------------------------------------------------------*/
+
+        document.querySelectorAll('button').forEach(element => element.addEventListener('click',function(){playSoundEffect('../resources/sounds/select_click.mp3')}));
+        
         /*
         Update the dimensions array on screen resize
         */
@@ -57,8 +65,7 @@
 
         /*
         Iniciates te game:
-        -adds event to shoot.
-        -adds event to track the mouse
+        -adds event to shoot and track the mouse
         -cleans the enemies of previous match
         -starts countdown and enemies/powerup spawning
         */
@@ -83,42 +90,39 @@
         function startCountdown(){
 
             //Define the duration of the game, here it is 30 seconds.
-            /*1000 = 1 sec*/
-            var countDown = new Date().getTime() + 30000;
+            var countDown = new Date().getTime() + 30000;/*1000 = 1 sec*/
 
             timer = setInterval(function(){
 
                 //Get current time
                 var now = new Date().getTime();
 
-                /*
-                Get difference between now and the time of the game, wich is x seconds into the future.
-                */
+                //Get difference between now and the time of the game, wich is x seconds into the future.
                 var distance = countDown - now;
 
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10 ? '0' + Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                // Time calculations for minutes and seconds
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) < 10 ? '0' + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000) < 10 ? '0' + Math.floor((distance % (1000 * 60)) / 1000) : Math.floor((distance % (1000 * 60)) / 1000); 
 
                 //Display the result
-                document.querySelector('#timeLeft').innerHTML = /*days + "d " + hours + "h " + */minutes + ":" + seconds;
+                document.querySelector('#timeLeft').innerHTML = minutes + ":" + seconds;
 
                 if(distance < 0){
                     //If countdown reaches 0 show message and stop the game.
                     clearInterval(timer);
                     stopGame();
-                    let t = document.createElement('div');
-                    t.setAttribute('class','endGameInput');
-                    t.innerHTML = `<h3 class='text-red-500 text-3xl'>Se acabó!</h3><p class="text-center text-white text-xl">Tu puntuación: ${points}</p>`;
+                    gameOver('Se Acabo!');
                     saveGame(1);          
-                    box.appendChild(t);
-                    document.querySelector('#timeLeft').innerHTML = '';
+                    document.querySelector('#timeLeft').innerHTML = 'Tiempo!';
                 }
             });
         }
 
+        function gameOver(text){
+            box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center text-center m-auto'>${text}</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
+        }
+
+        /*Saves the game into the dataBase*/
         function saveGame(finished){
             $.ajax({
                 url:'/saveGame',
@@ -165,11 +169,8 @@
                     enemyHitBox.bottom < bulletHitBox.bottom && 
                     enemies[index].classList.contains('enabled')){
                     if(!enemies[index].classList.contains('down')){
-                        if(powerUps['doublePoints']['enabled']){
-                            points+=20;
-                        }else{
-                            points+=10; 
-                        }
+                        //add 20 points if double points is enabled or 10 if isnt.
+                        powerUps['doublePoints']['enabled'] ? points+=20 : points+=10;
                     }
                     enemies[index].classList.toggle('down');
                     enemies[index].innerHTML = '<i class="fa-solid fa-burst" style="color: rgb(251 191 36);"></i>';
@@ -257,16 +258,14 @@
         function generateMonster(){
             //Modify time of enemy spawning and generates its position(left and top).
             enemyTimeout = getRndInteger(200,2000);
-            let top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
-            let left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
             let alien =  document.createElement("div");
 
             /*Give the alien the position properties*/
             alien.setAttribute('class','alien');
-            alien.style.top = top;
-            alien.style.left = left;
+            alien.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
+            alien.style.left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
             alien.innerHTML = '<i class="fa-solid fa-spaghetti-monster-flying"></i>';
-            alien.addEventListener('mouseover',addEvent);
+            alien.addEventListener('mouseover',function(){addEvent(this)});
 
             //Inserts alien inside the game box
             box.appendChild(alien);
@@ -276,13 +275,11 @@
 
               
         /*Add the event to notice if the player interacted with an enemy*/  
-        function addEvent(){
-                let elementPos = this.getBoundingClientRect();
+        function addEvent(e){
             if(
-                plyrBox.right < elementPos.left ||  plyrBox.left > elementPos.right || plyrBox.bottom < elementPos.top || plyrBox.top > elementPos.bottom){
-                if(this.classList.contains('enabled') && !player.classList.contains('invencible')){
-                    //t.setAttribute('class',' whitespace-pre absolute left-[50%] translate-x-[-50%] self-center m-auto w-100');
-                    box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center m-auto'>GAME OVER</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
+                plyrBox.right < e.getBoundingClientRect().left ||  plyrBox.left > e.getBoundingClientRect().right || plyrBox.bottom < e.getBoundingClientRect().top || plyrBox.top > e.getBoundingClientRect().bottom){
+                if(e.classList.contains('enabled') && !player.classList.contains('invencible')){
+                    gameOver('GAME OVER!');
                     playSoundEffect('/resources/sounds/game_over.mp3');
                     stopGame();
                     saveGame(0);
@@ -296,7 +293,6 @@
 
 
         /*Plays once the sound passed has argument on the method*/
-        function playSoundEffect(url){
-            let sound = new Audio(url);
-            sound.play();
-        }
+       playSoundEffect = (url) => { let sound = new Audio(url); sound.play();}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
