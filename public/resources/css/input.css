@@ -59,11 +59,13 @@ input,button,select:focus{
 }
 
 .enabled{
-  filter: invert(13%) sepia(84%) saturate(7087%) hue-rotate(359deg) brightness(98%) contrast(108%);
+  color:red;
 }
 
+
+
 .dissabled{
-  filter: invert(55%) sepia(7%) saturate(16%) hue-rotate(10deg) brightness(90%) contrast(85%);
+  color:gray;
 }
 
 .player{

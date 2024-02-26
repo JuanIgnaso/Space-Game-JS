@@ -258,7 +258,7 @@
             powerUps[type]['enabled'] = true; //sets flag to true
             playSoundEffect(powerUps[type]['sound']);
             document.querySelector('#powerup').innerHTML = powerUps[type]['message'];
-            document.querySelector('.' + type).classList.toggle('oculto');
+            document.querySelector('.' + type).classList.contains('oculto') ? document.querySelector('.' + type).classList.remove('oculto') : '';
             player.classList.toggle(type);
         }
 
@@ -281,7 +281,7 @@
             alien.setAttribute('class','alien dissabled ');
             alien.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
             alien.style.left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
-            alien.innerHTML = "<img src='/resources/svg/space-invaders.svg' alt='' class='size-10 object-none  overflow-hidden'>";
+            alien.innerHTML = '<i class="fa-solid fa-spaghetti-monster-flying"></i>';
             alien.addEventListener('mouseover',function(){addEvent(this)});
 
             //Inserts alien inside the game box

@@ -20,6 +20,7 @@ module.exports = {
     extend: {
       rotate:{
         '20':'20deg',
+        '340':'340deg',
       }
     },
   },
