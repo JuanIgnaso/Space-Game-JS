@@ -11,6 +11,11 @@ use juanignaso\phpmvc\framework\Application;
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/fontawesome/css/all.css">
 
+    <!-- GOOGLE ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -28,6 +33,7 @@ use juanignaso\phpmvc\framework\Application;
 
     <!-- FOOTER -->
     <footer class="text-center p-4">
+        <div class="border-2 border-white m-auto w-3/4 lg:w-1/2 mt-8 mb-8"></div>
         <ol class="flex flex-col items-center space-y-2 text-white">
             <li>
                 <h3 class="text-red-400">Space Game JS</h3>

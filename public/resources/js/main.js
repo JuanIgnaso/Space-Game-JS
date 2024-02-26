@@ -19,11 +19,21 @@
         Stores powerup status, message, soundeffect and fontawesome icon.
         */ 
         let powerUps = {
-            'doublePoints':{'enabled':false,'message':'Double Points','sound':'/resources/sounds/power_up.mp3','icon':'<i class="fa-solid fa-gem"></i>'},
+            'doublePoints':{'enabled':false,
+                            'message':'Double Points',
+                            'sound':'/resources/sounds/power_up.mp3',
+                            'icon':'<i class="fa-solid fa-gem"></i>'},
                             
-            'invencible':{'enabled':false,'message':'Invencible','sound':'/resources/sounds/shield_up.mp3','icon':'<i class="fa-solid fa-shield-halved"></i>'},
+            'invencible':{
+                            'enabled':false,
+                            'message':'Invencible',
+                            'sound':'/resources/sounds/shield_up.mp3',
+                            'icon':'<i class="fa-solid fa-shield-halved"></i>'},
 
-            'penetratingBullets':{'enabled':false,'message':'Penetrating Bullets','sound':'/resources/sounds/charge_up.mp3','icon':'<i class="fa-solid fa-angles-up"></i>'},
+            'penetratingBullets':{'enabled':false,
+                                  'message':'Penetrating Bullets',
+                                  'sound':'/resources/sounds/charge_up.mp3',
+                                  'icon':'<i class="fa-solid fa-angles-up"></i>'},
         };
 
         console.log(Object.keys(powerUps));
@@ -56,6 +66,7 @@
             box.addEventListener('click',shoot);
             document.addEventListener('mousemove',trackMouse);
             document.querySelector('#start').style.display = 'none';
+            document.querySelector('#powerUpList').classList.toggle('hidden');
             box.innerHTML = '';
             score.innerHTML = points;
             dlt = setInterval(function(){deleteFirst('.alien')},enemyTimeout + getRndInteger(8000,10000));
@@ -166,7 +177,11 @@
 
         //create bullet,set its class and position to where the user is pointing with the cursor
         let b = document.createElement('div');
-        b.setAttribute('class','bullet normal');
+        if(powerUps['penetratingBullets']['enabled'] == true){
+            b.setAttribute('class','penetrating');
+        }else{
+            b.setAttribute('class','bullet normal');
+        }
         
         b.style.top = e.pageY + 'px';
         b.style.left = e.pageX + 'px';
@@ -190,6 +205,7 @@
                         powerUps['doublePoints']['enabled'] ? points+=20 : points+=10;
                     }
                     enemies[index].classList.toggle('down');
+                    enemies[index].classList.remove('enabled');
                     enemies[index].innerHTML = '<i class="fa-solid fa-burst" style="color: rgb(251 191 36);"></i>';
                     let explode = setTimeout(function(){enemies[index].parentNode == null ? '' : enemies[index].parentNode.removeChild(enemies[index]);},200);
                     playSoundEffect('/resources/sounds/explosion.mp3');
@@ -221,6 +237,7 @@
             pUp.innerHTML = powerUps[type]['icon'];
             pUp.setAttribute('class',`powerUp ${type}`);
             pUp.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
+            pUp.style.left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
             box.appendChild(pUp);
             pUp.addEventListener('mouseover',function(){
                 let elementPos = this.getBoundingClientRect();
@@ -241,6 +258,7 @@
             powerUps[type]['enabled'] = true; //sets flag to true
             playSoundEffect(powerUps[type]['sound']);
             document.querySelector('#powerup').innerHTML = powerUps[type]['message'];
+            document.querySelector('.' + type).classList.toggle('oculto');
             player.classList.toggle(type);
         }
 
@@ -248,6 +266,7 @@
         function disablePowerUp(type){
             powerUps[type]['enabled'] = false;
             document.querySelector('#powerup').innerHTML = '';
+            document.querySelector('.' + type).classList.toggle('oculto');
             player.classList.toggle(type);
         }
         
@@ -259,10 +278,10 @@
             let alien =  document.createElement("div");
 
             /*Give the alien the position properties*/
-            alien.setAttribute('class','alien');
+            alien.setAttribute('class','alien dissabled ');
             alien.style.top = getRndInteger(dimensions.top,dimensions.height - dimensions.top) + 'px';
             alien.style.left = getRndInteger(dimensions.left,dimensions.width - dimensions.left) + 'px';
-            alien.innerHTML = '<i class="fa-solid fa-spaghetti-monster-flying"></i>';
+            alien.innerHTML = "<img src='/resources/svg/space-invaders.svg' alt='' class='size-10 object-none  overflow-hidden'>";
             alien.addEventListener('mouseover',function(){addEvent(this)});
 
             //Inserts alien inside the game box

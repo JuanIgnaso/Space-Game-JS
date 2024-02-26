@@ -4,7 +4,24 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ["./views/**/*.{html,js,css,php}"],
   theme: {
-    extend: {},
+    /*Customizar media breakpoints*/
+    // screens:{
+    //   'movil':'500px',
+    //   'tablet':'900px',
+    //   'desktop':'1300px',
+    //   //movil:text-xl
+    // },
+    /*Customizar colores*/
+    // colors:{
+    //   'micolor':'#codigo',
+    //   'tonoAzulClaro':'#codigo'
+    //  text-tonoAzulClaro
+    // },
+    extend: {
+      rotate:{
+        '20':'20deg',
+      }
+    },
   },
   plugins: [
     plugin(function({ addUtilities, addComponents, e, config }) {

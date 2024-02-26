@@ -59,12 +59,11 @@ input,button,select:focus{
 }
 
 .enabled{
-  color: red;
+  filter: invert(13%) sepia(84%) saturate(7087%) hue-rotate(359deg) brightness(98%) contrast(108%);
 }
 
 .dissabled{
-  color: grey;
-  
+  filter: invert(55%) sepia(7%) saturate(16%) hue-rotate(10deg) brightness(90%) contrast(85%);
 }
 
 .player{
@@ -83,22 +82,41 @@ input,button,select:focus{
   justify-content: center;
   color:lime;
   font-size: 2em;
+
 }
 
-.bullet{
 
-  width: 10px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+
+.bullet{
   position:absolute;
 }
 
 .normal{
+  width: 10px;
   background-color:  violet; 
+  border-radius: 50%;
+  aspect-ratio: 1/1;
 }
 
 .penetrating{
-  background-color: rgb(250 204 21);
+  /*background-color: rgb(250 204 21);*/
+  position:absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(250 204 21);
+  background-color: 10px solid rgb(250 204 21);
+  border-radius: 0%;
 }
 
 .formGroup{
@@ -108,7 +126,7 @@ input,button,select:focus{
 
 .powerUp{
   font-size: clamp(1em,2.5vw,2em);
-  animation: animate;
+  animation: sideways;
   left:0px;
   top:0px;
   display: flex;
@@ -133,9 +151,18 @@ color:rgb(34 211 238);
   color:rgb(250 204 21);
 }
 
-@keyframes animate {
+.oculto{
+  display: none !important;
+}
+
+@keyframes sideways {
   from{left:0%};
   to{left:100%};
+}
+
+@keyframes fadeInOut {
+  from{opacity: 0};
+  to{opacity: 100};
 }
 
 .input-group{
@@ -149,7 +176,7 @@ color:rgb(34 211 238);
 
 @layer base{
     h1{
-      @apply text-5xl;
+      @apply text-4xl;
       @apply font-bold;
     }
     h2{
