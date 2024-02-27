@@ -7,13 +7,14 @@ $this->title = 'Home';
 <?php
 if (!Application::isGuest()) {
     ?>
-    <header class="relative lg:absolute p-4">
-        <ol class="border-8 border-lime-400 p-4 text-red-400 rounded ">
+    <header class="relative text-center lg:text-start lg:absolute p-4">
+        <ol class="border-8 border-lime-400 bg-hero-plus-purpleLight-50 p-4 text-red-400 rounded ">
             <li>
-                <?php echo Application::$app->user->getUserName(); ?> <a href="/logout">logout</a>
+                <?php echo Application::$app->user->getUserName(); ?> <span class="text-purple-400">&rsaquo;</span> <a
+                    href="/logout" class="text-white hover:animate-pulse hover:text-yellow-300">logout</a>
             </li>
             <li>
-                <a href="/editProfile">Editar mi perfil</a>
+                <a class="text-cyan-400 hover:animate-pulse" href="/editProfile">Editar mi perfil</a>
             </li>
         </ol>
     </header>

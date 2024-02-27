@@ -169,6 +169,9 @@ color:rgb(34 211 238);
   border-bottom: 15px solid #c084fc;
 }
 
+.form-icon{
+  filter: invert(57%) sepia(87%) saturate(1379%) hue-rotate(219deg) brightness(97%) contrast(104%);
+}
 
 @keyframes sideways {
   from{left:0%};

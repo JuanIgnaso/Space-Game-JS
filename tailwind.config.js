@@ -45,19 +45,23 @@ module.exports = {
       // the list of patterns you want to generate a class for
       // the names must be in kebab-case
       // an empty array will generate all 87 patterns
-      patterns: ['bubbles'],
+      patterns: ['bubbles','plus'],
     
       // The foreground colors of the pattern
       // if you don't specify a color, the default will be used
       colors: {
         default: "#e5e5e5",
-        "black": "#00000" //also works with rgb(0,0,205)
+        "black": "#00000", //also works with rgb(0,0,205),
+        "lightGreen":"#a3e635",
+        "purpleLight":"#a855f7",
       },
     
       // The foreground opacity
       opacity: {
-        default: "0.2",
-        "100": "1.0"
+        default: "1",
+        "100": "1.0",
+        "50":"0.5",
+        "20":"0.2"
       }
     })
   ],

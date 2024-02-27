@@ -6,7 +6,7 @@ $this->title = 'Juego';
 <main class="relative flex flex-col">
     <div class="w-1/3 flex relative justify-center m-auto">
         <div id="box"
-            class="w-full relative flex aspect-square border-8 border-white bg-hero-bubbles bg-neutral-900 overflow-hidden shadow-lg shadow-white/40">
+            class="w-full relative flex aspect-square border-8 border-white bg-hero-bubbles-20 bg-neutral-900 overflow-hidden shadow-lg shadow-white/40">
             <!-- Test -->
         </div>
         <div class="absolute left-full top-0 pl-4 hidden" id="powerUpList">
