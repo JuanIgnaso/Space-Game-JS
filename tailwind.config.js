@@ -2,7 +2,7 @@
 
 const plugin = require('tailwindcss/plugin');
 module.exports = {
-  content: ["./views/**/*.{html,js,css,php}"],
+  content: ["./views/**/*.{html,js,css,php}","./public/resources/*.js"],
   theme: {
     /*Customizar media breakpoints*/
     // screens:{
@@ -18,6 +18,17 @@ module.exports = {
     //  text-tonoAzulClaro
     // },
     extend: {
+      
+      keyframes:{
+        leftRight:{ 
+          '0%':{right:'0%'},
+          '100%':{right:'6%'},
+        },
+      },
+        animation:{
+          leftRight: 'leftRight 1s alternate infinite ease-in-out',
+      },
+      
       rotate:{
         '20':'20deg',
         '340':'340deg',

@@ -25,4 +25,8 @@ $this->title = 'Login';
         </label>
         <input type="submit" value="Iniciar Sesión" class="self-center text-white p-3 border-4 border-white">
     </form>
+    <span class="block text-center m-auto text-white text-sm">Usuario de test: <strong
+            class="text-red-400">miOTRqemail@mail.com</strong>
+        -
+        <strong class="text-red-400">password</strong></span>
 </main>

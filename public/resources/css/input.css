@@ -128,17 +128,21 @@ input,button,select:focus{
 
 .powerUp{
   font-size: clamp(1em,2.5vw,2em);
-  animation: sideways;
   left:0px;
   top:0px;
   display: flex;
   justify-content: center;
   align-items: center;
   position:absolute;
+  animation: sideways;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-duration: 2.5s;
   animation-timing-function: ease-in-out;
+}
+
+.svg-crimson{
+  filter: invert(11%) sepia(83%) saturate(5613%) hue-rotate(342deg) brightness(104%) contrast(91%);
 }
 
 .doublePoints{
@@ -156,6 +160,15 @@ color:rgb(34 211 238);
 .oculto{
   display: none !important;
 }
+
+.arrow-up{
+  width: 0; 
+  height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 15px solid #c084fc;
+}
+
 
 @keyframes sideways {
   from{left:0%};
