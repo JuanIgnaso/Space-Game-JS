@@ -41,8 +41,6 @@
 
         /*FUNCTIONS AND EVENTLISTENERS---------------------------------------------------------------------------------------*/
 
-        document.querySelectorAll('button').forEach(element => element.addEventListener('click',function(){playSoundEffect('../resources/sounds/select_click.mp3')}));
-        
         /*
         Update the dimensions array on screen resize
         */

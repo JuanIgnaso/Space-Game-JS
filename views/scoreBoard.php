@@ -50,3 +50,11 @@ $this->title = 'ScoreBoard';
         ?>
     </tbody>
 </table>
+
+<section class="flex justify-center gap-4 mt-3">
+    <button
+        onclick="setTimeout(function(){window.location.replace(location.protocol + '//' + location.host + '/game');},1500)"
+        class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Volver al Juego</button>
+    <button onclick="setTimeout(function(){window.location.replace(location.protocol + '//' + location.host);},1500)"
+        class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Inicio</button>
+</section>

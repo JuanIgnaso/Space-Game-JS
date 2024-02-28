@@ -51,5 +51,12 @@ use juanignaso\phpmvc\framework\Application;
         </ol>
     </footer>
 </body>
+<script>
+
+    document.querySelectorAll('button:not(#startGameButton)').forEach(element => element.addEventListener('click', function () { playSoundEffect('./resources/sounds/select_click.mp3') }));
+
+    /*Plays once the sound passed has argument on the method*/
+    playSoundEffect = (url) => { let sound = new Audio(url); sound.play(); }
+</script>
 
 </html>

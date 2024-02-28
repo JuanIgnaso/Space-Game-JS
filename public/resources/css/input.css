@@ -169,6 +169,15 @@ color:rgb(34 211 238);
   border-bottom: 15px solid #c084fc;
 }
 
+.menu_button{
+  box-shadow: 0 10px rgb(126 34 206);
+}
+
+.menu_button:active{
+  box-shadow: 0 5px rgb(192 132 252);
+  transform: translate(0px,5px);
+}
+
 .form-icon{
   filter: invert(57%) sepia(87%) saturate(1379%) hue-rotate(219deg) brightness(97%) contrast(104%);
 }

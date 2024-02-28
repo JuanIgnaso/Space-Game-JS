@@ -7,7 +7,7 @@ $this->title = 'Registrarse';
 <h1 class="text-center text-red-400">Registrar nuevo Usuario</h1>
 
 <main>
-    <form class="w-1/3 flex flex-col gap-5 m-auto" action="" method="post">
+    <form class="w-1/3 flex flex-col gap-5 m-auto mt-3 p-3" action="" method="post">
 
         <label class="flex flex-col gap-2 items-center text-red-400">
             Nombre
@@ -68,7 +68,7 @@ $this->title = 'Registrarse';
         </label>
 
         <button type="submit"
-            class="text-red-400 p-3 border-4 border-purple-400 hover:animate-pulse self-center">Registrar
+            class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm self-center">Registrar
             Cuenta</button>
     </form>
 </main>

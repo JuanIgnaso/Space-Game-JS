@@ -21,11 +21,14 @@ $this->title = 'Juego';
     <h3 class="p-2 m-auto"><span id="timeLeft"></span></h3>
     <h3 class="text-center p-3">Puntuación : <span id="score">0</span></h3>
     <section class="flex justify-center gap-4">
-        <button id="start" class="border-4 border-white p-2 text-white rounded-md"
+        <button id="start" class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
             onclick="startGame()">Empezar</button>
-        <button class="border-4 border-white p-2 text-white rounded-md" onclick="location.reload()">Empezar de
+        <button class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
+            onclick="setTimeout(function(){location.reload()},1500)">Empezar de
             nuevo</button>
-        <button class="border-4 border-white p-2 text-white rounded-md"><a href="/scoreBoard">Scoreboard</a></button>
+        <button
+            onclick="setTimeout(function(){window.location.replace(location.protocol + '//' + location.host + '/scoreBoard');},1500)"
+            class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Scoreboard</button>
     </section>
 
 </main>

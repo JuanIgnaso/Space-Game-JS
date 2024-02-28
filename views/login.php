@@ -4,7 +4,7 @@ $this->title = 'Login';
 <h1 class="text-center text-red-400">Iniciar Sesión</h1>
 
 <main>
-    <form class="flex flex-col w-1/3 m-auto p-3" action="" method="post">
+    <form class="flex flex-col w-1/3 m-auto mt-3 p-3" action="" method="post">
 
         <label class=" flex flex-col mb-4 items-center text-red-400 gap-2">
             Email
@@ -38,7 +38,7 @@ $this->title = 'Login';
             </p>
         </label>
         <input type="submit" value="Iniciar Sesión"
-            class="self-center text-red-400 p-3 border-4 hover:animate-pulse border-purple-400">
+            class="self-center menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">
     </form>
     <span class="block text-center m-auto text-white text-sm">Usuario de test: <strong
             class="text-red-400">miOTRqemail@mail.com</strong>
