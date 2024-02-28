@@ -145,6 +145,10 @@ input,button,select:focus{
   filter: invert(11%) sepia(83%) saturate(5613%) hue-rotate(342deg) brightness(104%) contrast(91%);
 }
 
+.help{
+  filter: invert(92%) sepia(98%) saturate(1028%) hue-rotate(24deg) brightness(106%) contrast(79%);
+}
+
 .doublePoints{
   color:rgb(196, 116, 196);
 }

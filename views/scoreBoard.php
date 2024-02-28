@@ -3,12 +3,13 @@ use juanignaso\phpmvc\framework\Application;
 
 $this->title = 'ScoreBoard';
 ?>
-<h1 class="text-center">TOP 10 Scores</h1>
+<h1 class="text-center text-red-400">TOP 10 Scores</h1>
 <section class="m-auto p-3">
     <ul class="text-white flex justify-center gap-3">
-        <li><a href="/scoreBoard">General</a></li>
+        <li><a href="/scoreBoard" class="text-purple-400">General</a></li>
         <li>-</li>
-        <li><a href="/scoreBoard<?php echo Application::isGuest() ? '' : '?personal=yes'; ?>">Record Personal</a></li>
+        <li><a class="text-purple-400"
+                href="/scoreBoard<?php echo Application::isGuest() ? '' : '?personal=yes'; ?>">Record Personal</a></li>
     </ul>
 </section>
 <table class="text-white table-auto m-auto">

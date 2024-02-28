@@ -1,7 +1,9 @@
 <?php
 $this->title = 'Juego';
 ?>
-<h1 class="text-center m-0 p-3 text-red-400">JUEGO</h1>
+<h1 class="flex justify-center items-center gap-2 text-center m-0 p-3 text-red-400">JUEGO <img
+        src="/resources/svg/help-info-icon.svg" class="size-8 help" alt="">
+</h1>
 <h2 class="text-2xl p-4 text-center m-0 text-purple-400">Mueve la nave y dispara a los enemigos!</h2>
 <main class="relative flex flex-col">
     <div class="w-1/3 flex relative justify-center m-auto">
