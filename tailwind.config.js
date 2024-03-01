@@ -18,6 +18,9 @@ module.exports = {
     //  text-tonoAzulClaro
     // },
     extend: {
+      opacity:{
+        '92':'.92',
+      },
       
       keyframes:{
         leftRight:{ 
