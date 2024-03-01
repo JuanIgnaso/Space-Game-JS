@@ -30,7 +30,7 @@ $this->title = 'ScoreBoard';
         if (count($topGames) != 0) {
             foreach ($topGames as $game) {
                 ?>
-                <tr class="text-center">
+                <tr class="text-center invisible">
                     <td
                         class="p-2 <?php echo !Application::isGuest() && Application::$app->user->nombre == $game['nombre'] ? 'text-yellow-400' : ''; ?>">
                         <?php echo $game['nombre']; ?>
@@ -39,7 +39,7 @@ $this->title = 'ScoreBoard';
                         <?php echo $game['score']; ?>
                     </td>
                     <td class="p-2">
-                        <?php echo $game['game_finished'] == 1 ? 'No' : 'Yes'; ?>
+                        <?php echo $game['game_finished'] == 1 ? 'No' : 'Si'; ?>
                     </td>
                     <td class="p-2">
                         <?php echo $game['finished_at']; ?>
@@ -51,6 +51,23 @@ $this->title = 'ScoreBoard';
         ?>
     </tbody>
 </table>
+<script>
+    /*
+    Reutilizable con cualquier tabla.
+
+    muestra de a poco a poco cada fila de la tabla
+    */
+    let scoreboardRows = document.querySelectorAll('tbody tr');
+    let pos = 0;
+    let scoreInterval = setInterval(function () {
+        if (pos < scoreboardRows.length && scoreboardRows[pos].classList.contains('invisible')) {
+            scoreboardRows[pos].classList.toggle('invisible');
+            pos++;
+        } else {
+            clearInterval(scoreInterval);
+        }
+    }, 500);
+</script>
 
 <section class="flex justify-center gap-4 mt-3">
     <button

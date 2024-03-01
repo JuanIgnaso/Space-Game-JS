@@ -32,8 +32,8 @@ $this->title = 'Juego';
 
 <!-- JUEGO -->
 <h2 class="text-2xl p-4 text-center m-0 text-purple-400">Mueve la nave y dispara a los enemigos!</h2>
-<main class="relative flex flex-col">
-    <div class="w-1/3 flex relative justify-center m-auto">
+<main class="relative flex flex-col mb-4">
+    <div class=" w-[90%] md:w-1/3 flex relative justify-center m-auto">
         <div id="box"
             class="w-full relative flex aspect-square border-8 border-lime-400 bg-hero-bubbles-20 bg-neutral-900 overflow-hidden shadow-lg shadow-white/40">
         </div>
@@ -54,7 +54,7 @@ $this->title = 'Juego';
     <h3 class="text-center p-3">Puntuación : <span id="score">0</span></h3>
 
     <!-- MENU DEL JUEGO -->
-    <section class="flex justify-center gap-4">
+    <section class="flex flex-col p-2 md:flex-row justify-center text-sm md:text-base gap-4">
         <button id="start" class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
             onclick="startGame()">Empezar</button>
         <button class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
@@ -74,6 +74,10 @@ $this->title = 'Juego';
 
 
 <script src="/resources/js/main.js"></script>
+<!-- RECOMENDACIONES -->
+<h3 class="text-red-700 flex justify-center items-center pt-4 gap-3">Importante <img class="size-8 inline svg-alert"
+        src="/resources/svg/alert-circle-icon.svg" alt="alerta icono">
+</h3>
 <footer class="text-center text-white p-4">
     <p>Resolución mínima de Pantalla: 1300 x 720 o superior</p>
     <p>Resolución optima de Pantalla: 1920 x 1080</p>

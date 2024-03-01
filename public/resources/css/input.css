@@ -55,7 +55,7 @@ input,button,select:focus{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(1em,2.5vw,2em);
+  font-size: clamp(1.5em,2.5vw,2em);
 }
 
 .enabled{
@@ -143,6 +143,10 @@ input,button,select:focus{
 
 .svg-crimson{
   filter: invert(11%) sepia(83%) saturate(5613%) hue-rotate(342deg) brightness(104%) contrast(91%);
+}
+
+.svg-alert{
+  filter: invert(18%) sepia(67%) saturate(3138%) hue-rotate(345deg) brightness(94%) contrast(102%);
 }
 
 .help{

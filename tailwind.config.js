@@ -21,6 +21,10 @@ module.exports = {
       opacity:{
         '92':'.92',
       },
+      invert:{
+        20: '0.2',
+         
+      },
       
       keyframes:{
         leftRight:{ 
