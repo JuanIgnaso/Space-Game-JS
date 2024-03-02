@@ -36,7 +36,6 @@
                                   'icon':'<i class="fa-solid fa-angles-up"></i>'},
         };
 
-        console.log(Object.keys(powerUps));
         /*-------------------------------------------------------------------------------------------------------------------*/
 
         /*FUNCTIONS AND EVENTLISTENERS---------------------------------------------------------------------------------------*/
@@ -256,7 +255,7 @@
             powerUps[type]['enabled'] = true; //sets flag to true
             playSoundEffect(powerUps[type]['sound']);
             document.querySelector('#powerup').innerHTML = powerUps[type]['message'];
-            document.querySelector('.' + type).classList.contains('oculto') ? document.querySelector('.' + type).classList.remove('oculto') : '';
+            document.querySelector(`#powerUpList .${type}`).classList.contains('element-hidden') ? document.querySelector(`#powerUpList .${type}`).classList.toggle('element-hidden') : '';
             player.classList.toggle(type);
         }
 
@@ -264,7 +263,7 @@
         function disablePowerUp(type){
             powerUps[type]['enabled'] = false;
             document.querySelector('#powerup').innerHTML = '';
-            document.querySelector('.' + type).classList.toggle('oculto');
+            document.querySelector(`#powerUpList .${type}`).classList.toggle('element-hidden');
             player.classList.toggle(type);
         }
         

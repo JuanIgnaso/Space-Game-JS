@@ -165,7 +165,7 @@ color:rgb(34 211 238);
   color:rgb(250 204 21);
 }
 
-.oculto{
+.element-hidden{
   display: none !important;
 }
 

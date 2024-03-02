@@ -42,9 +42,9 @@ $this->title = 'Juego';
         <aside class="absolute left-full top-0 pl-4 hidden" id="powerUpList">
             <h3 class="whitespace-pre">Power Ups</h3>
             <div class="flex flex-col space-y-4 items-center mt-2">
-                <i class="fa-solid fa-gem doublePoints text-4xl p-2 oculto"></i>
-                <i class="fa-solid fa-shield-halved invencible text-4xl p-2 oculto"></i>
-                <i class="fa-solid fa-angles-up penetratingBullets text-4xl p-2 oculto"></i>
+                <i class="fa-solid fa-gem doublePoints text-4xl p-2 element-hidden"></i>
+                <i class="fa-solid fa-shield-halved invencible text-4xl p-2 element-hidden"></i>
+                <i class="fa-solid fa-angles-up penetratingBullets text-4xl p-2 element-hidden"></i>
             </div>
         </aside>
         <!-- ------------ -->

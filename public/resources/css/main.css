@@ -1369,7 +1369,7 @@ input,button,select:focus{
   color:rgb(250 204 21);
 }
 
-.oculto{
+.element-hidden{
   display: none !important;
 }
 
