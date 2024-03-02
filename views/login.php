@@ -37,6 +37,17 @@ $this->title = 'Login';
                 <?php echo isset($model->errors['password']) ? $model->getFirstError('password') : ''; ?>
             </p>
         </label>
+
+        <!-- REMEMBER ME CHECKBOX -->
+        <label class="relative flex mb-4 gap-2 text-red-400 items-center justify-center">
+            Guardar Sesión
+            <input class="peer absolute opacity-0 cursor-pointer h-0 w-0" type="checkbox" name="remember_me"
+                id="remember_me" value="checked">
+            <span
+                class="flex text-sm justify-center items-center peer-checked:after:content-['*'] peer-checked:after:visible after:content-[''] afther:invisible afther:m-auto relative size-7 border-4 border-purple-400 bg-neutral-900"></span>
+        </label>
+        <!--  -->
+
         <input type="submit" value="Iniciar Sesión"
             class="self-center menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">
     </form>
