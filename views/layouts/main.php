@@ -26,7 +26,20 @@ use juanignaso\phpmvc\framework\Application;
 </head>
 
 <body class="bg-neutral-900">
+    <?php
+    if (Application::$app->session->getFlash('success')) {
+        ?>
+        <div class="text-white bg-neutral-900 border-8 m-2 border-lime-400 p-3 rounded">
+            <span class="text-red-500 absolute hover:cursor-pointer hover:text-red-400"
+                onclick="this.parentNode.style.display='none'">X</span>
+            <p class="text-center text-sm md:text-base">
+                <?php echo Application::$app->session->getFlash('success'); ?>
+            </p>
+        </div>
 
+        <?php
+    }
+    ?>
     <div class="PageContainer">
         {{content}}
     </div>
@@ -51,12 +64,9 @@ use juanignaso\phpmvc\framework\Application;
         </ol>
     </footer>
 </body>
-<script>
-
+<script type="module">
+    import { playSoundEffect } from '/resources/js/reproduceSound.js';
     document.querySelectorAll('button:not(#startGameButton)').forEach(element => element.addEventListener('click', function () { playSoundEffect('./resources/sounds/select_click.mp3') }));
-
-    /*Plays once the sound passed has argument on the method*/
-    playSoundEffect = (url) => { let sound = new Audio(url); sound.play(); }
 </script>
 
 </html>

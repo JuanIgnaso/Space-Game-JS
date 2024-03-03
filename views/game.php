@@ -55,8 +55,7 @@ $this->title = 'Juego';
 
     <!-- MENU DEL JUEGO -->
     <section class="flex flex-col p-2 md:flex-row justify-center text-sm md:text-base gap-4">
-        <button id="start" class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
-            onclick="startGame()">Empezar</button>
+        <button id="start" class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Empezar</button>
         <button class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
             onclick="setTimeout(function(){location.reload()},1500)">Empezar de
             nuevo</button>
@@ -73,7 +72,7 @@ $this->title = 'Juego';
         class="text-red-400 absolute top-full text-base whitespace-normal text-center" id="powerup"></span></div>
 
 
-<script src="/resources/js/main.js"></script>
+<script src="/resources/js/main.js" type="module"></script>
 <!-- RECOMENDACIONES -->
 <h3 class="text-red-700 flex justify-center items-center pt-4 gap-3">Importante <img class="size-8 inline svg-alert"
         src="/resources/svg/alert-circle-icon.svg" alt="alerta icono">

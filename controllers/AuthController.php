@@ -34,7 +34,7 @@ class AuthController extends Controller
                 $formModel->loadData(['email' => $body['email'], 'password' => $body['password']]);
                 $formModel->login();
 
-                //Application::$app->session->setFlash('success', "Usuario registrado, bienvenido/a " . $body['nombre'] . "!");
+                Application::$app->session->setFlash('success', "Usuario registrado, bienvenido/a " . $body['nombre'] . "!");
                 Application::$app->response->redirect('/');
             }
 
@@ -56,7 +56,6 @@ class AuthController extends Controller
                 if (isset($request->getBody()['remember_me'])) {
                     $this->rememberMe(Application::$app->user->id);
                 }
-
                 $res->redirect('/');
             }
         }

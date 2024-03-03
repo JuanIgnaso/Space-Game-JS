@@ -41,20 +41,6 @@ if (!Application::isGuest()) {
     ?>
     <button
         class="menu_button text-red-400 text-3xl border-8 border-purple-400 rounded-sm p-4 animate-pulse active:border-purple-300 active:text-red-500 "
-        onclick="start()" id="startGameButton">Jugar</button>
-    <script>
-        function start() {
-            let sound = new Audio('/resources/sounds/game-start.mp3');
-            sound.play();
-            setTimeout(function () {
-                /*
-                    location.protocol -> http/https
-                    location.host -> localhost
-                    location.port -> :8080
-                */
-                window.location.replace(location.protocol + '//' + location.host + '/game');
-            }, 2500);
-        }
-
-    </script>
+        id="startGameButton">Jugar</button>
+    <script src="/resources/js/startGame.js"></script>
 </main>
