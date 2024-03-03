@@ -1,0 +1,24 @@
+version: "1"
+services:
+  app:
+    build: ./docker
+    image: juanignaso/block_game
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
+  db:
+    image: mysql:8
+    ports:
+      -"3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./DataBaseScript/BlockGame_DB.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234abc.
+      MYSQL_DATABASE: BlockGame_DB
+      MYSQL_USER: usertest
+      MYSQL_PASSWORD: 1234abc.
+volumes:
+  mysql-data:
+

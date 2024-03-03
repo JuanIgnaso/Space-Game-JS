@@ -51,11 +51,4 @@ $this->title = 'Login';
         <input type="submit" value="Iniciar Sesión"
             class="self-center menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">
     </form>
-    <!--
-        'Usuario de prueba'
-        <span class="block text-center m-auto text-white text-sm">Usuario de test: <strong
-            class="text-red-400">miOTRqemail@mail.com</strong>
-    -
-    <strong class="text-red-400">password</strong></span>
-    -->
 </main>
