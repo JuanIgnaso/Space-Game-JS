@@ -18,7 +18,7 @@ function saveGame(finished,points){
 
 /*Muestra el mensaje al finalizar partida*/
 function gameOver(text,points){
-    box.innerHTML = `<div class="endGameInput"><h3 class='text-red-600 text-3xl self-center text-center m-auto'>${text}</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
+    box.innerHTML = `<div id="endGameInput"><h3 class='text-red-600 text-3xl self-center text-center m-auto'>${text}</h3><p class='text-center text-white text-xl'>Tu puntuación: ${points}</p></div>`;
 }
 
 export {gameOver,saveGame};

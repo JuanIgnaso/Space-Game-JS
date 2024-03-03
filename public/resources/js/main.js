@@ -17,7 +17,7 @@
         dltP = powTimeout = powUp = spawnObj = enemyTimeout = dlt = timer = null;
 
         /*PLAYER*/
-        let player = document.querySelector('.player');
+        let player = document.querySelector('#player');
         let plyrBox = player.getBoundingClientRect();
 
         /*

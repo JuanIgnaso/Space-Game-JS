@@ -6,21 +6,77 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+@layer components{
+  .game-btn{
+    @apply border-4 border-purple-400 p-2 text-red-400 rounded-sm;
+  }
+
+  .player-powerup{
+    @apply text-red-400 absolute top-full text-base whitespace-normal text-center;
+  }
+
+  .page-header{
+    @apply text-red-400 text-center p-2;
+  }
+
+  .form-group{
+    @apply flex flex-col mb-4 text-red-400;
+  }
+
+  .input-field{
+    @apply focus:border-purple-400 text-white bg-neutral-900 border-4 border-lime-300;
+  }
+
+  .icon{
+    @apply absolute right-full pr-3 size-14 hidden md:block;
+  }
+
+  .input-wrap{
+    @apply flex space-x-6 items-center relative;
+  }
+
+  .input-label{
+    @apply flex flex-col gap-2 items-center text-red-400;
+  }
+
+  .input-error{
+    @apply font-bold text-red-800 text-xs;
+  }
+
+}
+
+
+
+@layer base{
+  h1{
+    @apply text-4xl;
+    @apply font-bold;
+  }
+  h2{
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h3{
+    @apply text-xl;
+    @apply font-bold;
+  }
+  h4{
+    @apply text-lg;
+    @apply font-bold;
+  }
+  body{
+    @apply font-normal;
+  }
+
+}
+
 body{
     font-family: "Press Start 2P", system-ui;
 }
 
-.my-legacy-class {
-    padding: 5px;
-    margin: 5px;
-    background: red;
-    color:white;
-    font-weight: 800;
-}
-
 body *{
   box-sizing: border-box;
-} 
+}
 
 h1,h2,h3,h4,h5{
   color:white;
@@ -34,18 +90,21 @@ input,button,select:focus{
   outline: none;
 }
 
-.endGameInput{
+#endGameInput{
   white-space: pre;
   position: absolute;
   left:50%;
   transform: translate(-50%);
   align-self: center;
+}
 
-  h3{
-    color:red;
-    font-size: 1.8em;
-    align-self: center;
-  }
+#box{
+  width: 100%;
+  position: relative;
+  display: flex;
+  aspect-ratio: 1/1;
+  border-width: 8px;
+  overflow: hidden;
 }
 
 .alien{
@@ -68,7 +127,7 @@ input,button,select:focus{
   color:gray;
 }
 
-.player{
+#player{
   width: 20px;
   aspect-ratio: 1/1;
   position:absolute;
@@ -104,7 +163,7 @@ input,button,select:focus{
 
 .normal{
   width: 10px;
-  background-color:  violet; 
+  background-color:  violet;
   border-radius: 50%;
   aspect-ratio: 1/1;
 }
@@ -112,8 +171,8 @@ input,button,select:focus{
 .penetrating{
   /*background-color: rgb(250 204 21);*/
   position:absolute;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid rgb(250 204 21);
@@ -170,8 +229,8 @@ color:rgb(34 211 238);
 }
 
 .arrow-up{
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-bottom: 15px solid #c084fc;
@@ -209,25 +268,3 @@ color:rgb(34 211 238);
   color:crimson;
 }
 
-@layer base{
-    h1{
-      @apply text-4xl;
-      @apply font-bold;
-    }
-    h2{
-      @apply text-3xl;
-      @apply font-bold;
-    }
-    h3{
-      @apply text-xl;
-      @apply font-bold;
-    }
-    h4{
-      @apply text-lg;
-      @apply font-bold;
-    }
-    body{
-      @apply font-normal;
-    }
-    
-  }

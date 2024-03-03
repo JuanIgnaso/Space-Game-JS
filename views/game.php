@@ -34,8 +34,7 @@ $this->title = 'Juego';
 <h2 class="text-2xl p-4 text-center m-0 text-purple-400">Mueve la nave y dispara a los enemigos!</h2>
 <main class="relative flex flex-col mb-4">
     <div class=" w-[90%] md:w-1/3 flex relative justify-center m-auto">
-        <div id="box"
-            class="w-full relative flex aspect-square border-8 border-lime-400 bg-hero-bubbles-20 bg-neutral-900 overflow-hidden shadow-lg shadow-white/40">
+        <div id="box" class="border-lime-400 bg-hero-bubbles-20 bg-neutral-900 shadow-lg shadow-white/40">
         </div>
 
         <!-- POWERUPS -->
@@ -55,21 +54,19 @@ $this->title = 'Juego';
 
     <!-- MENU DEL JUEGO -->
     <section class="flex flex-col p-2 md:flex-row justify-center text-sm md:text-base gap-4">
-        <button id="start" class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Empezar</button>
-        <button class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm"
-            onclick="setTimeout(function(){location.reload()},1500)">Empezar de
+        <button id="start" class="menu_button game-btn">Empezar</button>
+        <button class="menu_button game-btn" onclick="setTimeout(function(){location.reload()},1500)">Empezar de
             nuevo</button>
         <button
             onclick="setTimeout(function(){window.location.replace(location.protocol + '//' + location.host + '/scoreBoard');},1500)"
-            class="menu_button border-4 border-purple-400 p-2 text-red-400 rounded-sm">Scoreboard</button>
+            class="menu_button game-btn">Scoreboard</button>
     </section>
     <!-- -------------- -->
 
 </main>
 <!-- ---------------------- -->
 
-<div class="player"><i class="fa-brands fa-space-awesome"></i><span
-        class="text-red-400 absolute top-full text-base whitespace-normal text-center" id="powerup"></span></div>
+<div id="player"><i class="fa-brands fa-space-awesome"></i><span class="player-powerup" id="powerup"></span></div>
 
 
 <script src="/resources/js/main.js" type="module"></script>
