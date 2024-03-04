@@ -7,7 +7,7 @@ $this->title = 'Home';
 <?php
 if (!Application::isGuest()) {
     ?>
-    <header id="userHud" class="lg:text-start lg:absolute">
+    <header id="userHud" class="text-center lg:text-start relative lg:absolute">
         <ol class="border-8 border-lime-400 bg-hero-plus-purpleLight-50 p-4 text-red-400 rounded ">
             <li>
                 <?php echo Application::$app->user->getUserName(); ?> <span class="text-purple-400">&rsaquo;</span> <a

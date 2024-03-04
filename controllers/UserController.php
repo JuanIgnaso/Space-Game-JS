@@ -34,7 +34,7 @@ class UserController extends Controller
             if (empty($arr['nombre']) || !isset($arr['nombre'])) {
                 $arr['nombre'] = $user->nombre;
             }
-            if ($model->attrInUse($user->id, 'nombre')) {
+            if ($model->attrInUse($user->id, 'nombre', $arr['nombre'])) {
                 $model->addError('nombre', 'El nombre que has escrito ya está en uso');
             }
             if (empty($arr['email'])) {
@@ -43,7 +43,7 @@ class UserController extends Controller
             if (!filter_var($arr['email'], FILTER_VALIDATE_EMAIL)) {
                 $model->addError('email', 'Formato de email incorrecto');
             }
-            if ($model->attrInUse($user->id, 'email')) {
+            if ($model->attrInUse($user->id, 'email', $arr['email'])) {
                 $model->addError('email', 'El correo que has escrito ya está en uso');
             }
             if (!empty($arr['password'])) {

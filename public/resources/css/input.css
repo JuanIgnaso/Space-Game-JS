@@ -130,8 +130,6 @@ input,button,select:focus{
 }
 
 #userHud{
-  position: relative;
-  text-align: center;
   padding: 1rem/* 16px */;
 }
 
