@@ -43,6 +43,10 @@
     @apply font-bold text-red-800 text-xs;
   }
 
+  .list-component{
+    @apply hover:animate-pulse text-lime-400 hover:text-red-400;
+  }
+
 }
 
 
@@ -121,10 +125,20 @@ input,button,select:focus{
   color:red;
 }
 
-
-
 .dissabled{
   color:gray;
+}
+
+#userHud{
+  position: relative;
+  text-align: center;
+  padding: 1rem/* 16px */;
+}
+
+#hudElements{
+  border-width: 8px;
+  padding: 1rem/* 16px */;
+  border-radius: 0.25rem/* 4px */;
 }
 
 #player{
@@ -154,8 +168,6 @@ input,button,select:focus{
   'GRAD' 0,
   'opsz' 24
 }
-
-
 
 .bullet{
   position:absolute;

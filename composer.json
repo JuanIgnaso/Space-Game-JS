@@ -3,7 +3,7 @@
     "type": "project",
     "require": {
         "vlucas/phpdotenv": "^5.6",
-        "juanignaso/php-mcv-framework": "v1.0.3.5"
+        "juanignaso/php-mcv-framework": "v1.0.4"
     },
     "autoload": {
         "psr-4": {

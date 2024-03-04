@@ -7,7 +7,7 @@ $this->title = 'Home';
 <?php
 if (!Application::isGuest()) {
     ?>
-    <header class="relative text-center lg:text-start lg:absolute p-4">
+    <header id="userHud" class="lg:text-start lg:absolute">
         <ol class="border-8 border-lime-400 bg-hero-plus-purpleLight-50 p-4 text-red-400 rounded ">
             <li>
                 <?php echo Application::$app->user->getUserName(); ?> <span class="text-purple-400">&rsaquo;</span> <a
@@ -32,9 +32,9 @@ if (!Application::isGuest()) {
     if (Application::isGuest()) {
         ?>
         <ol class="flex justify-start gap-3 text-lime-400">
-            <li><a href="/login" class="hover:animate-pulse hover:text-red-400">Login</a></li>
+            <li><a href="/login" class="list-component">Login</a></li>
             <li>/</li>
-            <li><a href="/register" class="hover:animate-pulse hover:text-red-400">Registrarse</a></li>
+            <li><a href="/register" class="list-component">Registrarse</a></li>
         </ol>
         <?php
     }

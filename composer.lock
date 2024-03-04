@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75fd8fda6df77b0d9c686e621a119c61",
+    "content-hash": "9a0c1971108e99208cc5fcfbee1d67c7",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -70,16 +70,16 @@
         },
         {
             "name": "juanignaso/php-mcv-framework",
-            "version": "v1.0.3.5",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JuanIgnaso/php-mvc-framework.git",
-                "reference": "0cff5864c23343956539821c044e1ae01a90ff21"
+                "reference": "6271bb1b706cc490ade0a366cb4629b7bb2cd8d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JuanIgnaso/php-mvc-framework/zipball/0cff5864c23343956539821c044e1ae01a90ff21",
-                "reference": "0cff5864c23343956539821c044e1ae01a90ff21",
+                "url": "https://api.github.com/repos/JuanIgnaso/php-mvc-framework/zipball/6271bb1b706cc490ade0a366cb4629b7bb2cd8d0",
+                "reference": "6271bb1b706cc490ade0a366cb4629b7bb2cd8d0",
                 "shasum": ""
             },
             "type": "library",
@@ -97,9 +97,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JuanIgnaso/php-mvc-framework/issues",
-                "source": "https://github.com/JuanIgnaso/php-mvc-framework/tree/v1.0.3.5"
+                "source": "https://github.com/JuanIgnaso/php-mvc-framework/tree/v1.0.4"
             },
-            "time": "2024-02-09T15:09:28+00:00"
+            "time": "2024-03-04T13:36:28+00:00"
         },
         {
             "name": "phpoption/phpoption",
